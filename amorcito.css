@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(circle at top, #3a1c5a, #1b0f2f);
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.page { display: none; max-width: 90%; }
+.page.active { display: block; }
+
+h1 { font-family: 'Playfair Display', serif; font-size: 28px; }
+p { font-size: 18px; opacity: 0.9; }
+
+/* BOTONES RGB */
+button {
+  position: relative;
+  padding: 16px 32px;
+  margin: 15px;
+  font-size: 16px;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg,#ff00cc,#3333ff,#00ffee,#ff00cc);
+  background-size: 400%;
+  animation: rgbBorder 4s linear infinite;
+  border-radius: 32px;
+  z-index: -1;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #000;
+  border-radius: 28px;
+  z-index: -1;
+}
+
+@keyframes rgbBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* LATIDO SÍ */
+.pulse {
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* TEMBLOR NO */
+.shake {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* TEXTO MAQUINA */
+#typewriter {
+  font-size: 19px;
+  line-height: 1.7;
+  min-height: 220px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* FUEGOS ARTIFICIALES */
+/* FUEGOS ARTIFICIALES MEJORADOS */
+.firework {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.firework::before,
+.firework::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.firework::before {
+  animation: particle1 1.2s ease-out forwards;
+}
+
+.firework::after {
+  animation: particle2 1.2s ease-out forwards;
+}
+
+@keyframes particle1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(40px, -60px) scale(0); opacity: 0; }
+}
+
+@keyframes particle2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(-50px, 40px) scale(0); opacity: 0; }
+}
+
+.spark {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* GIF - OCULTO Y CON TAMAÑO CONTROLADO */
+#surpriseGif {
+  display: none;
+  width: 250px;
+  max-width: 80%;
+  margin-top: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(255, 0, 204, 0.6);
+}
+
+#surpriseGif.show {
+  display: block;
+  animation: fadeInGif 1s ease-in;
+}
+
+@keyframes fadeInGif {
+  from { opacity: 0; transform: scale(0.8) translateY(-20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
