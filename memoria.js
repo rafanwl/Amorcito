@@ -1,10 +1,10 @@
 const images = [
-  "img/1.jpg",
-  "img/2.jpg",
-  "img/3.jpg",
-  "img/4.jpg",
-  "img/5.jpg",
-  "img/6.jpg"
+  "img/a.jpg",
+  "img/b.jpg",
+  "img/c.jpg",
+  "img/d.jpg",
+  "img/e.jpg",
+  "img/f.jpg"
 ];
 
 // duplicamos para hacer parejas
@@ -67,3 +67,4 @@ function resetTurn() {
   [firstCard, secondCard] = [null, null];
   lockBoard = false;
 }
+
