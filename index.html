@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti Laura , por ser la persona más increíble y especial que yo haya conocido ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(circle at top, #3a1c5a, #1b0f2f);
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.page { display: none; max-width: 90%; }
+.page.active { display: block; }
+
+h1 { font-family: 'Playfair Display', serif; font-size: 28px; }
+p { font-size: 18px; opacity: 0.9; }
+
+/* BOTONES RGB */
+button {
+  position: relative;
+  padding: 16px 32px;
+  margin: 15px;
+  font-size: 16px;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg,#ff00cc,#3333ff,#00ffee,#ff00cc);
+  background-size: 400%;
+  animation: rgbBorder 4s linear infinite;
+  border-radius: 32px;
+  z-index: -1;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: #000;
+  border-radius: 28px;
+  z-index: -1;
+}
+
+@keyframes rgbBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+/* LATIDO SÍ */
+.pulse {
+  animation: pulse 1.3s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* TEMBLOR NO */
+.shake {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+/* TEXTO MAQUINA */
+#typewriter {
+  font-size: 19px;
+  line-height: 1.7;
+  min-height: 220px;
+  font-family: 'Playfair Display', serif;
+}
+
+/* FUEGOS ARTIFICIALES */
+.firework {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: fly 1s ease-out forwards;
+}
+
+@keyframes fly {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(6); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page active" id="page1">
+  <h1 id="question">¿Me perdonaaaas amorcito???</h1>
+  <button id="yesBtn" class="pulse" onclick="yes()">SÍIIII 💖</button>
+  <button id="noBtn" onclick="no()">NO 😠</button>
+</div>
+
+<div class="page" id="page2">
+  <h1>Gracias por perdonarme amorcito, te amooooooo 💕</h1>
+  <p>Ahora vamos con lo más importante jeje</p>
+  <button onclick="next()">Muajajjajajajaj</button>
+</div>
+
+<div class="page" id="page3">
+  <div id="typewriter"></div>
+  <button onclick="intermediate()">Gracias amorcito 💕</button>
+</div>
+
+<div class="page" id="page4">
+  <h1 id="teaseText"></h1>
+
+  <button id="emojiBtn" onclick="tease()">🤭✨</button>
+
+  <button id="secondBtn" style="display:none" onclick="finalPage()">
+    Siempre hay algo extra amorcito ✨
+  </button>
+</div>
+
+<div class="page" id="page5">
+  <h1>Esto tambien es para ti amorcito 💕</h1>
+  
+  <!-- GIF aquí -->
+  <img 
+    id="surpriseGif"
+    src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHZ6a3JqanpzY3Q1NjhseWxlZWlpbXliYmhrZTRobHlvODN5dXNjciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TjSPQgowhhJdHgvnwA/giphy.gif"
+    alt="Sorpresa"
+    style="width: 250px; max-width: 80%; margin: 20px auto; display: block; border-radius: 15px; box-shadow: 0 0 25px rgba(255, 0, 204, 0.6);"
+  >
+  
+  <a href="juego.html">
+  <button>Un jueguito </button>
+</a>
+
+ <a href="https://youtu.be/40AJMQob25o?si=keqDWWt8iOZxHd_l" target="_blank" rel="noopener">
+    <button>Boton de dudosa procedencia</button>
+  </a>
+
+  <a href="https://youtu.be/w-rVk2j7aT4?si=suKs146100-TxCxL" target="_blank" rel="noopener">
+    <button>Te la dedico mi amor</button>
+  </a>
+
+</div>
+
+<script>
+let noCount = 0, yesScale = 1, noScale = 1;
+
+const texts = [
+  "¿Segura?",
+  "¿Segurísima?",
+  "Piénsalo bien amor...",
+  "Última oportunidad Laura...",
+  "No desperdicies la oportunidad amor"
+];
+
+function no() {
+  if (noCount < texts.length) {
+    document.getElementById("question").innerText = texts[noCount++];
+  }
+
+  yesScale += 0.18;
+  noScale -= 0.18;
+
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+
+  yesBtn.style.transform = `scale(${yesScale})`;
+  noBtn.style.transform = `scale(${Math.max(noScale, 0.4)})`;
+
+  noBtn.classList.add("shake");
+  setTimeout(() => noBtn.classList.remove("shake"), 300);
+}
+
+function yes() { showPage(2); }
+
+function next() {
+  showPage(3);
+  typeText("Feliz cumpleaños amor, no podía darte un mensaje de cumpleaños de una forma tan aburrida como mandarte un mensaje y ya, prefiero hacer las cosas a mi manera ¡!, tú sabes. Hoy cumple años una de las personas más importantes de mi vida, una persona que en menos de 6 meses ha hecho que no pueda imaginarme como seria mi vida sin ella, una persona que, aunque tengamos la misma edad me ha enseñado miles de cosas, una persona que hace que se me acaben las cualidades para describirla, una persona que cambió mi vida. De ahora en adelante el 8 de Enero no será un día cualquiera, será el recordatorio de que en este mundo existen personas maravillosas en todos los sentidos, el recordatorio de que la belleza existe porque tu alma está repleta de ella, un día para recordar lo lindo que es amar y ser amado, no puedo no pensar en cómo pasa el tiempo de rápido, hace nada me decías que apenas nos conocíamos hace 15 días y hoy ya es tú cumpleaños, lo lindo de eso es que en el transcurso de esos días me he vuelto adicto a quererte, a verte feliz, a verte sonreír, a ver como tus ojitos brillan cuando nos vemos, de sentir tu piel y tus caricias, nada me hace más feliz que eso amor. Quiero que sepas que quererte y expresarte mi amor es la cosa más linda que he experimentado nunca, ojalá hoy tengas un día muy lindo y hagas lo que más te gusta, ¡¡comer algo rico!!, no estaré contigo físicamente, pero espero me lleves en tu corazoncito allá donde estás, pocas cosas deben ser mejores que pasar un cumpleaños en la playa, aunque ahora que estas allá el mar y el atardecer no son lo más lindo en la costa. Te amo Laura");
+  launchFireworks();
+}
+
+function intermediate() { showPage(4); }
+function finalPage() { showPage(5); }
+
+function showPage(num) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + num).classList.add('active');
+}
+
+function typeText(text) {
+  let i = 0;
+  const el = document.getElementById("typewriter");
+  el.innerHTML = "";
+  const interval = setInterval(() => {
+    el.innerHTML += text.charAt(i++);
+    if (i >= text.length) clearInterval(interval);
+  }, 50);
+}
+
+/* FUEGOS CHIMBAS */
+function launchFireworks() {
+  setInterval(() => {
+    for (let i = 0; i < 20; i++) {
+      const fw = document.createElement("div");
+      fw.className = "firework";
+      fw.style.left = Math.random() * 100 + "vw";
+      fw.style.top = Math.random() * 100 + "vh";
+      fw.style.background = `hsl(${Math.random()*360},100%,70%)`;
+      fw.style.boxShadow = `0 0 15px currentColor`;
+      document.body.appendChild(fw);
+      setTimeout(() => fw.remove(), 1200);
+    }
+  }, 800);
+}
+
+let teaseStep = 0;
+const teaseLines = [
+  "Amorcito",
+  "Amorcito<br>No creas que",
+  "Amorcito<br>No creas que<br>eso fue todo!!!!"
+];
+
+function tease() {
+  document.getElementById("teaseText").innerHTML = teaseLines[teaseStep++];
+  if (teaseStep === teaseLines.length) {
+    document.getElementById("emojiBtn").style.display = "none";
+    document.getElementById("secondBtn").style.display = "inline-block";
+  }
+}
+</script>
+
+</body>
+</html>
